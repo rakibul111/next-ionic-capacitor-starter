@@ -11,6 +11,7 @@ import {
   IonIcon,
   IonContent,
   IonMenuButton,
+  IonItem,
 } from '@ionic/react';
 import Notifications from './Notifications';
 import { useState } from 'react';
@@ -56,15 +57,20 @@ const Feed = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
+
       <IonContent className="ion-padding" fullscreen>
+        {/* ?? */}
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Feed</IonTitle>
           </IonToolbar>
         </IonHeader>
+        
         <Notifications open={showNotifications} onDidDismiss={() => setShowNotifications(false)} />
         {homeItems.map((i, index) => (
-          <FeedCard {...i} key={index} />
+          <IonItem routerLink={`/tabs/feed/${index + 1}`} routerDirection="none" detail={false} lines="none" key={index}>
+            <FeedCard key={index} {...i}/>
+          </IonItem>
         ))}
       </IonContent>
     </IonPage>

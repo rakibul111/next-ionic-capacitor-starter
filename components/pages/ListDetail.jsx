@@ -35,9 +35,9 @@ const ListItemEntry = ({ list, item }) => (
 
 const ListDetail = ({ match }) => {
   const lists = Store.useState(selectors.getLists);
-  const {
-    params: { listId },
-  } = match;
+  // distructure listId from url
+  const { params: { listId },} = match;
+  // load list which matches listId
   const loadedList = lists.find(l => l.id === listId);
 
   return (
